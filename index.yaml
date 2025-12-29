@@ -3,9 +3,9 @@ entries:
   elasticsearch:
   - apiVersion: v1
     appVersion: 8.5.1
-    created: "2025-12-25T12:01:09.36227557+09:00"
+    created: "2025-12-29T15:36:24.304798348+09:00"
     description: Official Elastic helm chart for Elasticsearch
-    digest: d129537795f4926db409a238cdb91b8705700097ee65df5598e2a3904ab10b92
+    digest: ac15a9c09a8e1e0870f3b7e76da94c8ef700e8319ab64e720ad0f39db2bc1acc
     home: https://github.com/elastic/helm-charts
     icon: https://helm.elastic.co/icons/elasticsearch.png
     maintainers:
@@ -17,10 +17,27 @@ entries:
     urls:
     - myelasticsearch-8.5.1.tgz
     version: 8.5.1
+  logstash:
+  - apiVersion: v1
+    appVersion: 8.5.1
+    created: "2025-12-29T15:36:24.307438723+09:00"
+    description: Official Elastic helm chart for Logstash
+    digest: dea63d07b31230df62cb6122e6fd2ae04f550ecb81d91ee1d34a23a70001626b
+    home: https://github.com/elastic/helm-charts
+    icon: https://helm.elastic.co/icons/logstash.png
+    maintainers:
+    - email: helm-charts@elastic.co
+      name: Elastic
+    name: logstash
+    sources:
+    - https://github.com/elastic/logstash
+    urls:
+    - mylogstash-8.5.1.tgz
+    version: 8.5.1
   mynginx:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-12-25T12:01:09.363461215+09:00"
+    created: "2025-12-29T15:36:24.309072506+09:00"
     description: A Helm chart for running nginx webserver on k8s_20251221
     digest: 16d616185daaf96b90e7d5e491f74535bfb854d7f66abfd2c07ae4ac55ba1d2f
     name: mynginx
@@ -28,4 +45,4 @@ entries:
     urls:
     - mynginx-0.1.0.tgz
     version: 0.1.0
-generated: "2025-12-25T12:01:09.356942249+09:00"
+generated: "2025-12-29T15:36:24.300947635+09:00"
