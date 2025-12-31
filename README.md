@@ -40,6 +40,14 @@ language - python (faskapi) <br>
 v0.1 (2025.12.21) - 프로젝트 구성도 작성, github helm repo 구성 및 mynginx 테스트 chart 업로드 <br>
 v0.2 (2025.12.28) - elasticsearch chart values.yaml 수정 후 업로드 <br>
 v0.3 (2025.12.29) - elasticsearch chart values.yaml 싱글노드 재구성 후 정상 동작 확인 + logstash 와 연동 정상 동작 확인<br>
+v0.4 (2025.12.30) - kibana yaml 설치 후 k8s 클러스터 대시보드 구성을 위해서 metricbeat + kube-state-metric yaml 배포 완료. <br>
+```
+현재 초기 테스트 배포 버전이라 보완해야할 점이 많음.
+ELK 스택의 구조 -- FileBeat(로그수집) -> Logstash(필터링) -> Elasticsearch(데이터 저장) -> Kibana(대시보드)
+로그 수집이 우선되야 하므로, logstash는 우선 접어두고, filebeat 구성하여 로그수집 진행
+```
+v0.5 (2025.12.31) - logstash helm chart uninstall 후 filebeat yaml 배포 진행 (https://github.com/elastic/beats/tree/main/deploy/kubernetes/filebeat) 참고
+
 
 
 
