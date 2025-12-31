@@ -9,11 +9,6 @@ helm search repo mynginx
 helm install nginx helm_repo/mynginx
 ```
 
-다운 가능한 chart list
-- mynginx
-- myelasticsearch-8.5.1
-- mylogstash-8.5.1
-
 
 <br>
 <br>
@@ -27,11 +22,10 @@ helm install nginx helm_repo/mynginx
 k8s 환경에서 CI/CD, Monitoring 환경 구성 예정 <br>
 복잡한 yaml을 관리하기 위해서 helm로 패키징하여 자동화 <br>
 kustomize를 이용하여 다양한 환경에서도 yaml을 체계적으로 관리 <br>
-CI - Jenkins 예정 <br>
+CI - Jenkins <br>
 CD - helm + argoCD <br>
-Monitoring - Prometheus + Grafana <br>
-EelasticSearch <br>
-language - python (faskapi) <br>
+observability - EFK Stack (추후 Logstash 추가) 
+language - python (+faskapi) <br>
 
 <br>
 <br>
@@ -46,7 +40,12 @@ v0.4 (2025.12.30) - kibana yaml 설치 후 k8s 클러스터 대시보드 구성�
 ELK 스택의 구조 -- FileBeat(로그수집) -> Logstash(필터링) -> Elasticsearch(데이터 저장) -> Kibana(대시보드)
 로그 수집이 우선되야 하므로, logstash는 우선 접어두고, filebeat 구성하여 로그수집 진행
 ```
-v0.5 (2025.12.31) - logstash helm chart uninstall 후 filebeat yaml 배포 진행 (https://github.com/elastic/beats/tree/main/deploy/kubernetes/filebeat) 참고
+v0.5 (2025.12.31) - logstash helm chart uninstall 후 filebeat yaml 배포 완료 <br>
+
+ 
+### 1차 observability 구성 완료_2025.12.31)
+ 
+========================================================================================
 
 
 
