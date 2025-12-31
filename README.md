@@ -18,10 +18,11 @@ helm install nginx helm_repo/mynginx
 
 
 
-<agenda>
-k8s 환경에서 CI/CD, Monitoring 환경 구성 예정 <br>
-복잡한 yaml을 관리하기 위해서 helm로 패키징하여 자동화 <br>
-kustomize를 이용하여 다양한 환경에서도 yaml을 체계적으로 관리 <br>
+<Project agenda>
+1. k8s 환경에서 CI/CD, observability 환경 구성  <br>
+2. 복잡한 yaml을 관리하기 위해서 helm로 패키징하여 배포 <br>
+3. kustomize를 이용하여 다양한 환경에서도 yaml을 체계적으로 관리 <br>
+<br>
 CI - Jenkins <br>
 CD - helm + argoCD <br>
 observability - EFK Stack (추후 Logstash 추가) 
@@ -43,7 +44,7 @@ ELK 스택의 구조 -- FileBeat(로그수집) -> Logstash(필터링) -> Elastic
 v0.5 (2025.12.31) - logstash helm chart uninstall 후 filebeat yaml 배포 완료 <br>
 
  
-### 1차 observability 구성 완료_2025.12.31)
+### 1차 observability 구성 완료_2025.12.31
  
 ========================================================================================
 
