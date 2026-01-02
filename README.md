@@ -46,9 +46,18 @@ v0.5 (2025.12.31) - logstash helm chart uninstall 후 filebeat yaml 배포 완�
  
 ### 1차 observability 구성 완료_2025.12.31
  
-========================================================================================
+================================================================================ <br>
 
+v1.1 (2026.01.02) - jenkins helm 배포 및 github, dockerhub 레포 생성. <br>
+- ci_build (https://github.com/vkfkdto004/ci_build.git)
+- kimwooseop/ci_build (https://hub.docker.com/repository/docker/kimwooseop/ci_build/general)
+```
+https://github.com/vkfkdto004/ci_build.git 링크는 이미지 빌드를 위한 레포지토리 이다.
+https://hub.docker.com/repository/docker/kimwooseop/ci_build/general 링크는 jenkins에서 이미지 빌드 후 푸쉬하기 위한 레포지토리이다.
 
+대략적인 구조
+개발 -> ci_build 레포 push -> webhook -> jenkins -> 이미지 빌드 -> dockerhub 레포 push 
+```
 
 
 
