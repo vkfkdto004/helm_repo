@@ -58,6 +58,6 @@ https://hub.docker.com/repository/docker/kimwooseop/ci_build/general 링크는 j
 대략적인 구조
 개발 -> ci_build 레포 push -> webhook -> jenkins -> 이미지 빌드 -> dockerhub 레포 push 
 ```
-
+v1.2 (2026.01.03~04) - jenkins helm 수정 후 재업로드, ci_build에 nginx 이미지 빌드 자동화까지 완료 (자세한 설명은 ci_build 레포지토리에서 설명)<br>
 
 
