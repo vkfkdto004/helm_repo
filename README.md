@@ -59,5 +59,5 @@ https://hub.docker.com/repository/docker/kimwooseop/ci_build/general 링크는 j
 개발 -> ci_build 레포 push -> webhook -> jenkins -> 이미지 빌드 -> dockerhub 레포 push 
 ```
 v1.2 (2026.01.03~04) - jenkins helm 수정 후 재업로드, ci_build에 nginx 이미지 빌드 자동화까지 완료 (자세한 설명은 ci_build 레포지토리에서 설명)<br>
-
+v1.3 (2026.01.04) - 사소한 에러나, 서버 자체에 문제가 많아서 k8s 클러스터 CP1+WORKER2 재구성 후 jenkins 환경까지 재배포 완료
 
