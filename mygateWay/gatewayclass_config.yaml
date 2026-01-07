@@ -1,0 +1,29 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: cilium
+  labels:
+    app.kubernetes.io/managed-by: "Helm"
+  annotations:
+    meta.helm.sh/release-name: "cilium"
+    meta.helm.sh/release-namespace: "kube-system"
+spec:
+  controllerName: io.cilium/gateway-controller
+  parametersRef:
+    group: cilium.io
+    kind: CiliumGatewayClassConfig
+    name: cilium-gw-config
+    namespace: kube-system
+---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumGatewayClassConfig
+metadata:
+  name: cilium-gw-config
+  namespace: kube-system
+spec:
+  service:
+    type: NodePort
+    externalTrafficPolicy: Cluster
+    loadBalancerSourceRangesPolicy: Allow
+
+
