@@ -1,0 +1,59 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: cilium-gateway-access
+  namespace: elastic-system
+rules:
+- apiGroups: ["gateway.networking.k8s.io"]
+  resources: ["gateways", "httproutes"]
+  verbs: ["get", "list", "watch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cilium-gateway-access
+  namespace: elastic-system
+subjects:
+- kind: ServiceAccount
+  name: cilium
+  namespace: kube-system
+roleRef:
+  kind: Role
+  name: cilium-gateway-access
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: kibana-gw
+  namespace: elastic-system
+spec:
+  gatewayClassName: cilium
+  listeners:
+  - name: http
+    protocol: HTTP
+    port: 80
+    allowedRoutes:
+      namespaces:
+        from: Same
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: kibana-route
+  namespace: elastic-system
+spec:
+  parentRefs:
+  - name: kibana-gw
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - kind: Service
+      name: kibana-kb-http
+      port: 5601
+

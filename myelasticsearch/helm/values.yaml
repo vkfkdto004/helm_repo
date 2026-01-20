@@ -31,7 +31,7 @@ esMajorVersion: ""
 
 esConfig:
   elasticsearch.yml: |
-    xpack.security.enabled: false
+    xpack.security.enabled: true
     xpack.security.http.ssl.enabled: false
 
 discovery.type: single-node
@@ -56,6 +56,10 @@ esJvmOptions: {}
 extraEnvs: []
 #  - name: MY_ENVIRONMENT_VAR
 #    value: the_value_goes_here
+# extraEnvs:
+#   - name: ES_JAVA_OPTS
+#     value: "-Des.security.manager.enabled=false"
+    
 
 # Allows you to load environment variables from kubernetes secret or config map
 envFrom: []
@@ -95,7 +99,8 @@ podAnnotations: {}
 # additionals labels
 labels: {}
 
-esJavaOpts: "-Djava.security.manager=allow" # example: "-Xmx1g -Xms1g"
+#esJavaOpts: "-Djava.security.manager=allow" # example: "-Xmx1g -Xms1g"
+esJavaOpts: "-Des.security.manager.enabled=false"
 
 resources:
   requests:
@@ -206,7 +211,7 @@ service:
   enabled: true
   labels: {}
   labelsHeadless: {}
-  type: LoadBalancer
+  type: ClusterIP
   # Consider that all endpoints are considered "ready" even if the Pods themselves are not
   # https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceSpec
   publishNotReadyAddresses: false
@@ -228,6 +233,9 @@ maxUnavailable: 1
 podSecurityContext:
   fsGroup: 1000
   runAsUser: 1000
+  seccompProfile:
+    type: Unconfined
+
 
 securityContext:
   capabilities:
