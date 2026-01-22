@@ -105,3 +105,6 @@ cilium service list를 통해서도 확인을 할 수 있는 부분이고, L7에
 
 하지만 elasticsearch, kibana는 TLS 구성이 되어 있다. 위와 동일하게 cilium을 사용해서 컨트롤을 해야하는 것이 맞지만 일단 k8s에서 가지고 있는 service 리소스를 이용해서 haproxy에 등록을 했다. cilium 컨트롤을 하며 처음으로 머리가 빙빙 도는 순간을 맞이했다..
 
+
+v.2.4 (2026.01.22) - elastic 버전 업그레이드에 따라 filebeat.input이 살짝 달라졌다. 기존엔 type: container가 가능했지만 이제는 error log를 뱉어냈음. log에서 알려주는 elastic 공홈을 보고 type: filestream으로 변경 -> 해결 완료.
+elastic 기능을 쓰려고 elastic에 대해서 스터디 진행 중.
