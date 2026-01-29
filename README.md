@@ -117,3 +117,6 @@ v 2.5 (2026.01.27) - elastic ML 교육 수강 후에 elastic에 대한 전반적
 Observability를 위한 metricbeat-hosts -> k8s 인프라에 대한 모니터링
 stack monitoring 은 stack_monitoring -> 각 elastic 모듈에 대한 모니터링
 ```
+
+v 2.6 (2026.01.29) - elastic을 잘 활용한다면 observability에 대한 부분이 많이 해소될 것같다. 고도하 하는 것이 구성은 기본이고 추가적으로 해당 솔루션에 대한 이해도 차이에 따라서 천차만별이 될 것같다. k8s에서 구성해볼 수 있는 모든 것을 테스트 해보자고 마음을 먹었다.
+바쁜 와중에 더디더라도 꾸준히 계속 진행중..
