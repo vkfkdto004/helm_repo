@@ -1,0 +1,29 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: mycluster-sidecar-sa-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "endpoints", "secrets", "namespaces"]
+  verbs: ["get", "list", "watch", "create", "update", "patch"]
+
+- apiGroups: ["mysql.oracle.com"]
+  resources: ["innodbclusters"]
+  verbs: ["get", "list", "watch", "update"]
+
+- apiGroups: ["apiextensions.k8s.io"]
+  resources: ["customresourcedefinitions"]
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: mycluster-sidecar-sa-binding
+subjects:
+- kind: ServiceAccount
+  name: mycluster-sidecar-sa
+  namespace: mysql
+roleRef:
+  kind: ClusterRole
+  name: mycluster-sidecar-sa-role
+  apiGroup: rbac.authorization.k8s.io

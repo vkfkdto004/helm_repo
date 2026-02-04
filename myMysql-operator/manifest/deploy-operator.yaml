@@ -130,7 +130,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: mysql-operator-sa
-    namespace: mysql-operator
+    namespace: mysql
   # TODO The following entry is for dev purposes only
   #- kind: Group
   #  name: system:serviceaccounts
@@ -148,80 +148,10 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: mysql-operator
+  name: mysql
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: mysql-operator-sa
-  namespace: mysql-operator
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mysql-operator
-  namespace: mysql-operator
-  labels:
-    version: "1.0"
-    app.kubernetes.io/name: mysql-operator
-    app.kubernetes.io/instance: mysql-operator
-    app.kubernetes.io/version: 9.6.0-2.2.7
-    app.kubernetes.io/component: controller
-    app.kubernetes.io/managed-by: mysql-operator
-    app.kubernetes.io/created-by: mysql-operator
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      name: mysql-operator
-  template:
-    metadata:
-      labels:
-        name: mysql-operator
-    spec:
-      securityContext:
-        runAsNonRoot: true
-      containers:
-        - name: mysql-operator
-          image: container-registry.oracle.com/mysql/community-operator:9.6.0-2.2.7
-          imagePullPolicy: IfNotPresent
-          args:
-            [
-              "mysqlsh",
-              "--log-level=@INFO",
-              "--pym",
-              "mysqloperator",
-              "operator",
-            ]
-          env:
-            - name: MYSQLSH_USER_CONFIG_HOME
-              value: /mysqlsh
-            - name: MYSQLSH_CREDENTIAL_STORE_SAVE_PASSWORDS
-              value: never
-          readinessProbe:
-            exec:
-              command:
-              - cat
-              - /tmp/mysql-operator-ready
-            initialDelaySeconds: 1
-            periodSeconds: 3
-          volumeMounts:
-            - name: mysqlsh-home
-              mountPath: /mysqlsh
-            - name: tmpdir
-              mountPath: /tmp
-          securityContext:
-            capabilities:
-              drop:
-              - ALL
-            runAsUser: 2
-            allowPrivilegeEscalation: false
-            privileged: false
-            readOnlyRootFilesystem: true
-            runAsNonRoot: true
-      volumes:
-        - name: mysqlsh-home
-          emptyDir: {}
-        - name: tmpdir
-          emptyDir: {}
-      serviceAccountName: mysql-operator-sa
+  namespace: mysql

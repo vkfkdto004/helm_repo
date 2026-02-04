@@ -1,0 +1,27 @@
+apiVersion: mysql.oracle.com/v2
+kind: InnoDBCluster
+metadata:
+  name: mycluster
+  namespace: mysql
+spec:
+  secretName: mypwds
+  tlsUseSelfSigned: true
+  instances: 3
+  router:
+    instances: 1
+  datadirVolumeClaimTemplate:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi
+    # 추후 DB 데이터 복제할 떄 사용
+    # initDB:
+    #   clone:
+    #     donorUrl: mycluster-0.mycluster-instances.mysql.svc.cluster.local:3306
+    #     rootUser: root
+    #     secretKeyRef:
+    #       name: mypwds
+    mycnf: |
+      [mysqld]
+      max_connections=100
